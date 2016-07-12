@@ -27,7 +27,7 @@ class MenuDesigner {
   public function getMenu() {
     return $this->menu;
   }
-
+  
   /**
    * 添加一个子菜单
    * @param string $name - 子菜单标题
@@ -118,6 +118,7 @@ class MenuDesigner {
     );
     return $this->addMenu($button);
   }
+
 
   //将生成的菜单数组添加到menu后返回
   private function addMenu($button) {
