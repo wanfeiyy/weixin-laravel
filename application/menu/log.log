@@ -1,0 +1,123 @@
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: application/json; encoding=utf-8
+Date: Fri, 08 Jul 2016 06:58:47 GMT
+Content-Length: 69
+
+{"errcode":47001,"errmsg":"data format error hint: [Rm1AUA0127vr20]"}
+{"errcode":47001,"errmsg":"data format error hint: [Rm1AUA0127vr20]"}
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: application/json; encoding=utf-8
+Date: Fri, 08 Jul 2016 07:02:20 GMT
+Content-Length: 65
+
+{"errcode":47001,"errmsg":"data format error hint: [xM0340vr21]"}
+{"errcode":47001,"errmsg":"data format error hint: [xM0340vr21]"}
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: application/json; encoding=utf-8
+Date: Fri, 08 Jul 2016 07:07:23 GMT
+Content-Length: 69
+
+{"errcode":47001,"errmsg":"data format error hint: [uGsPFa0643vr20]"}
+{"errcode":47001,"errmsg":"data format error hint: [uGsPFa0643vr20]"}
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: application/json; encoding=utf-8
+Date: Fri, 08 Jul 2016 07:08:31 GMT
+Content-Length: 69
+
+{"errcode":47001,"errmsg":"data format error hint: [hYoaFA0711vr21]"}
+{"errcode":47001,"errmsg":"data format error hint: [hYoaFA0711vr21]"}
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: application/json; encoding=utf-8
+Date: Fri, 08 Jul 2016 07:19:03 GMT
+Content-Length: 69
+
+{"errcode":47001,"errmsg":"data format error hint: [Sb1Qva0343vr23]"}
+{"errcode":47001,"errmsg":"data format error hint: [Sb1Qva0343vr23]"}
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: application/json; encoding=utf-8
+Date: Fri, 08 Jul 2016 07:19:24 GMT
+Content-Length: 69
+
+{"errcode":47001,"errmsg":"data format error hint: [3bLcDA0364vr20]"}
+{"errcode":47001,"errmsg":"data format error hint: [3bLcDA0364vr20]"}
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: application/json; encoding=utf-8
+Date: Fri, 08 Jul 2016 07:21:19 GMT
+Content-Length: 77
+
+{"errcode":40055,"errmsg":"invalid button url domain hint: [VH8iNA0479vr21]"}
+{"errcode":40055,"errmsg":"invalid button url domain hint: [VH8iNA0479vr21]"}
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: application/json; encoding=utf-8
+Date: Fri, 08 Jul 2016 07:21:45 GMT
+Content-Length: 77
+
+{"errcode":40055,"errmsg":"invalid button url domain hint: [fPyh6a0505vr18]"}
+{"errcode":40055,"errmsg":"invalid button url domain hint: [fPyh6a0505vr18]"}
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: application/json; encoding=utf-8
+Date: Fri, 08 Jul 2016 07:21:58 GMT
+Content-Length: 77
+
+{"errcode":40055,"errmsg":"invalid button url domain hint: [zG.nNa0518vr20]"}
+{"errcode":40055,"errmsg":"invalid button url domain hint: [zG.nNa0518vr20]"}
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: application/json; encoding=utf-8
+Date: Fri, 08 Jul 2016 07:22:55 GMT
+Content-Length: 27
+
+{"errcode":0,"errmsg":"ok"}
+{"errcode":0,"errmsg":"ok"}
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: application/json; encoding=utf-8
+Date: Fri, 08 Jul 2016 07:23:17 GMT
+Content-Length: 27
+
+{"errcode":0,"errmsg":"ok"}
+{"errcode":0,"errmsg":"ok"}
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: application/json; encoding=utf-8
+Date: Fri, 08 Jul 2016 07:25:15 GMT
+Content-Length: 277
+
+{"menu":{"button":[{"type":"view","name":"网易云音乐","url":"http:\/\/music.163.com","sub_button":[]},{"type":"click","name":"今日歌曲","key":"V1001_TODAY_MUSIC","sub_button":[]},{"type":"location_select","name":"我在哪","key":"V_TODAY_LOCATION","sub_button":[]}]}}
+{"menu":{"button":[{"type":"view","name":"网易云音乐","url":"http:\/\/music.163.com","sub_button":[]},{"type":"click","name":"今日歌曲","key":"V1001_TODAY_MUSIC","sub_button":[]},{"type":"location_select","name":"我在哪","key":"V_TODAY_LOCATION","sub_button":[]}]}}
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: application/json; encoding=utf-8
+Date: Fri, 08 Jul 2016 07:31:12 GMT
+Content-Length: 277
+
+{"menu":{"button":[{"type":"view","name":"网易云音乐","url":"http:\/\/music.163.com","sub_button":[]},{"type":"click","name":"今日歌曲","key":"V1001_TODAY_MUSIC","sub_button":[]},{"type":"location_select","name":"我在哪","key":"V_TODAY_LOCATION","sub_button":[]}]}}
+{"menu":{"button":[{"type":"view","name":"网易云音乐","url":"http:\/\/music.163.com","sub_button":[]},{"type":"click","name":"今日歌曲","key":"V1001_TODAY_MUSIC","sub_button":[]},{"type":"location_select","name":"我在哪","key":"V_TODAY_LOCATION","sub_button":[]}]}}
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: application/json; encoding=utf-8
+Date: Fri, 08 Jul 2016 08:31:09 GMT
+Content-Length: 175
+
+{"access_token":"1-A_ARpBdi-6SkL0elKl7lCAo-Re6kIQMCNLkKiuLJEb-4SZWJWzxcbd9yaXHyMbAhrXRdZsva4aeJTG1_FenK4xSNEQTR-G_tDMhexZMvgdh5cltLf6ZHiwsFUayv_nUYUiAGAKOK","expires_in":7200}
+{"access_token":"1-A_ARpBdi-6SkL0elKl7lCAo-Re6kIQMCNLkKiuLJEb-4SZWJWzxcbd9yaXHyMbAhrXRdZsva4aeJTG1_FenK4xSNEQTR-G_tDMhexZMvgdh5cltLf6ZHiwsFUayv_nUYUiAGAKOK","expires_in":7200}
+--------
+200
+{"access_token":"1-A_ARpBdi-6SkL0elKl7lCAo-Re6kIQMCNLkKiuLJEb-4SZWJWzxcbd9yaXHyMbAhrXRdZsva4aeJTG1_FenK4xSNEQTR-G_tDMhexZMvgdh5cltLf6ZHiwsFUayv_nUYUiAGAKOK","expires_in":7200}
+HTTP/1.1 200 OK
+Connection: keep-alive
+Content-Type: application/json; encoding=utf-8
+Date: Fri, 08 Jul 2016 08:31:09 GMT
+Content-Length: 277
+
+{"menu":{"button":[{"type":"view","name":"网易云音乐","url":"http:\/\/music.163.com","sub_button":[]},{"type":"click","name":"今日歌曲","key":"V1001_TODAY_MUSIC","sub_button":[]},{"type":"location_select","name":"我在哪","key":"V_TODAY_LOCATION","sub_button":[]}]}}
+{"menu":{"button":[{"type":"view","name":"网易云音乐","url":"http:\/\/music.163.com","sub_button":[]},{"type":"click","name":"今日歌曲","key":"V1001_TODAY_MUSIC","sub_button":[]},{"type":"location_select","name":"我在哪","key":"V_TODAY_LOCATION","sub_button":[]}]}}
