@@ -20,18 +20,18 @@ class Music163Controller extends Controller
     }
     public function getMusic(Request $request)
     {
-         $input = 'music_163_'.$request->input('key','hot');
-         $url = $this->$input;
-         $output = $this->apiCurl->curl_get($url);
+        $input = 'music_163_'.$request->input('key','hot');
+        $url = $this->$input;
+        $output = $this->apiCurl->curl_get($url);
         $dom = HtmlDomParser::str_get_html($output);
         $songArr = [];
         foreach($dom->find('#song-list-pre-cache .f-hide a') as $k=>$v){
             preg_match('/.*?id=([0-9]+)/',$v->href,$res);
-            $songArr[]  = ['url'=>$this->link_url.$res[1],'name'=>strip_tags ((string) $v)];
+            $songArr[]  = ['url'=>$this->link_url.$res[1].'&auto=1&height=166','name'=>strip_tags ((string) $v)];
             if(count($songArr) >=10){
                 break;
             }
         }
-        return view('menu.index',['songArr'=>$songArr]);
+        return view('music163.index',['songArr'=>$songArr]);
     }
 }
