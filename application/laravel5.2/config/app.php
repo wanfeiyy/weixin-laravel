@@ -52,7 +52,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'Asia/Shanghai',
 
     /*
     |--------------------------------------------------------------------------
@@ -160,7 +160,7 @@ return [
          * Custom Service Provider
          */
         App\Providers\ValidatorResultProvider::class,
-
+        Overtrue\LaravelWechat\ServiceProvider::class,
 
     ],
 
@@ -208,6 +208,7 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'ValidatorResultClass' => App\Facades\ValidatorResultClass::class,
+        'Wechat' => Overtrue\LaravelWechat\Facade::class,
     ],
 
 ];

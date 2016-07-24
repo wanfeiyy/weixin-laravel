@@ -1,24 +1,29 @@
 <?php
 namespace App\Http\Controllers;
-include('../../../wlight/develop/Library.class.php');
 use Illuminate\Http\Request;
 use Sunra\PhpSimple\HtmlDomParser;
 use Validator;
 use ValidatorResultClass;
 use App\Http\Requests;
-
+use App\Libraries\MenuDesigner;
+use EasyWeChat\Core\Exceptions\HttpException;
 class MenuController extends Controller
 {
+    private $menuDesigner;
     private $menu;
-
-    public function __construct()
+    public function __construct(MenuDesigner $menuDesigner)
     {
-        $this->menu = \wlight\dev\Library::import('menu', 'Menu');
+        $this->menu = app('wechat')->menu;
+        $this->menuDesigner = $menuDesigner;
     }
      public function index()
      {
-         $menu = $this->menu->get();
-         return json_encode(['state'=>true,'data'=>$menu]);
+         try{
+             $menu = $this->menu->all();
+         }catch(HttpException $e){
+             return json_encode(['state'=>false,'erroe'=>['erroe_coe'=>$e->getCode(),'description'=>$e->getMessage()]]);
+         }
+         return json_encode(['state'=>true,'data'=>$menu['menu']]);
      }
 
     /**
@@ -42,7 +47,7 @@ class MenuController extends Controller
 
          $data = $request->all()['menu'];
          $menus = $this->handleMenu($data);
-         $result =$this->menu->create($menus);
+         $result = $this->menu->add($menus);
           if($result){
               return json_encode(['state'=>true,'data'=>[],'message'=>'success message']);
           }else{
@@ -52,7 +57,7 @@ class MenuController extends Controller
 
     public function delete()
     {
-        if($this->menu->delete()){
+        if($this->menu->destroy()){
             return json_encode(['state'=>true,'data'=>[],'message'=>'success message']);
         }
         return json_encode(['state'=>false,'error_code'=>5001,'error'=>"删除失败"]);
@@ -61,7 +66,7 @@ class MenuController extends Controller
 
     private function handleMenu($data)
     {
-        $menuDesigner = \wlight\dev\Library::import('menu', 'MenuDesigner');
+        $menuDesigner = $this->menuDesigner;
         $oneMenu = [];
         foreach($data as $k=>$v){
             switch ($v['type']){
@@ -80,7 +85,7 @@ class MenuController extends Controller
                     $oneMenu[] = $menuDesigner->addView($v['name'],$v['url']);
                     break;
                 case 4 :
-                    $oneMenu[] = $menuDesigner->addLocation($v['name'],$v['url']);
+                    $oneMenu[] = $menuDesigner->addLocation($v['name'],$v['key']);
                     break;
             }
 

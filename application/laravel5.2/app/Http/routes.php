@@ -1,5 +1,5 @@
 <?php
-
+use App\UserMessage;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -12,8 +12,8 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
 });
 Route::post('menu/delete','MenuController@delete');
 Route::resource('menu','MenuController');
 Route::controller('music163','Music163Controller');
+Route::any('/wechat', 'WechatController@serve');
