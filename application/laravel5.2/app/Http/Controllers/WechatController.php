@@ -27,7 +27,7 @@ class WechatController extends Controller
                     return $this->handleEventMessage($message);
                     break;
                 case 'location':
-                    return 'ssss';
+                    return $this->handleLocationMessage($message);
                     break;
                 default:
                     return '无法识别';
@@ -41,7 +41,12 @@ class WechatController extends Controller
 
     private function handleLocationMessage($data)
     {
-        return \GuzzleHttp\json_decode($data,true);
+        $message =  \GuzzleHttp\json_decode($data,true);
+        $result = $this->userMessage->addUserMessage($message);
+        if(isset($result['state']) && !$result['state']){
+            return '暂时无法识别该内容';
+        }
+        return "LBS查询";
     }
 
     private function handleTextMessage($data)

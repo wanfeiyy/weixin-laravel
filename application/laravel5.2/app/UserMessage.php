@@ -8,7 +8,7 @@ use Mockery\CountValidator\Exception;
 class UserMessage extends Model
 {
     const UPDATED_AT =  null;
-    protected  $fillable = ['name','type','message_id','content'];
+    protected  $fillable = ['name','type','message_id','content','location_x','location_y'];
     protected $fields =  [
         'text'=>1,
         'image'=>2,
@@ -24,7 +24,9 @@ class UserMessage extends Model
         $dbData['type'] = $this->fields[$data['MsgType']];
         $dbData['message_id'] = $data['MsgId'];
         $dbData['created_at'] = date('Y-m-d H:i:s',$data['CreateTime']);
-        $dbData['content'] = $data['Content'];
+        isset($data['content']) && $dbData['content'] = $data['Content'];
+        isset($data['Location_X']) && $dbData['location_x'] = $data['Location_X'];
+        isset($data['Location_Y']) && $dbData['location_y'] = $data['Location_Y'];
         try{
             $result = $this->create($dbData);
             return $result;
