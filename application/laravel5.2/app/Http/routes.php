@@ -1,5 +1,7 @@
 <?php
 use App\UserMessage;
+use Sunra\PhpSimple\HtmlDomParser;
+use App\Pymt;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -17,3 +19,4 @@ Route::post('menu/delete','MenuController@delete');
 Route::resource('menu','MenuController');
 Route::controller('music163','Music163Controller');
 Route::any('/wechat', 'WechatController@serve');
+Route::controller('pymt','PymtController');
