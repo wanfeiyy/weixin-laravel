@@ -14,6 +14,10 @@ use App\Pymt;
 */
 
 Route::get('/', function () {
+    $url = 'http://cd.meituan.com/category/xiuxianyule/all/page2?mtt=1.index%2Fdefault%2Fpoi.0.0.ir6gpfj2';
+    $reg = '/http:\/\/([a-z]+)\..*\/category\/([a-z]+)\//';
+    preg_match($reg,$url,$re);
+    dd($re);
 });
 Route::post('menu/delete','MenuController@delete');
 Route::resource('menu','MenuController');
