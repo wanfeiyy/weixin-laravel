@@ -58,7 +58,6 @@ class PyMt extends Job implements ShouldQueue
                 'saleType'=>$type,
                 'saleCity'=>$city,
             ];
-            Log::info(json_encode($queueData));
             $mt->addMt($queueData);
         }
     }
