@@ -38,6 +38,7 @@ class ApiCurl
         curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);          //设置cURL 参数，要求结果保存到字符串中还是输出到屏幕上。
 //        curl_setopt($curl,CURLOPT_FORBID_REUSE,1);
         $data = curl_exec($curl);       //运行cURL，请求网页
+        $curl_error = curl_errno($curl);
         if ($http_code) {
             $http_code = curl_getinfo($curl,CURLINFO_HTTP_CODE);
             $tmp['http_code'] = $http_code;
@@ -45,7 +46,9 @@ class ApiCurl
             $data = $tmp;
         }
         curl_close($curl);      //关闭URL请求
-
+        if($curl_error >0 ){
+            return false;
+        }
         return $data;
     }
 

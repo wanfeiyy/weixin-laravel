@@ -2,6 +2,7 @@
 use App\UserMessage;
 use Sunra\PhpSimple\HtmlDomParser;
 use App\Pymt;
+use App\Libraries\BaiduGeocoding;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -14,13 +15,12 @@ use App\Pymt;
 */
 
 Route::get('/', function () {
-    $url = 'http://cd.meituan.com/category/xiuxianyule/all/page2?mtt=1.index%2Fdefault%2Fpoi.0.0.ir6gpfj2';
-    $reg = '/http:\/\/([a-z]+)\..*\/category\/([a-z]+)\//';
-    preg_match($reg,$url,$re);
-    dd($re);
+    $baiduApi = new BaiduGeocoding();
+    dd($baiduApi->getLatLng('汉丽轩韩式自','成都'));
 });
 Route::post('menu/delete','MenuController@delete');
 Route::resource('menu','MenuController');
 Route::controller('music163','Music163Controller');
 Route::any('/wechat', 'WechatController@serve');
 Route::controller('pymt','PymtController');
+Route::resource('geohash','GeohashController');

@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Pymt extends Model
 {
-    protected $fillable = ['name','pic','comment','url','type','city','location_x','location_y'];
+    protected $fillable = ['name','pic','comment','url','type','city','location_x','location_y','geohash'];
 
     public function addMt($data)
     {
@@ -17,7 +17,6 @@ class Pymt extends Model
         $dbData['comment'] = $data['saleComment'];
         $dbData['type'] = $data['saleType'];
         $dbData['city'] = $data['saleCity'];
-        list($dbData['location_x'],$dbData['location_y']) = $this->handleGeocoding($dbData['name'],$dbData['city']);
         return $this->create($dbData);
     }
 
