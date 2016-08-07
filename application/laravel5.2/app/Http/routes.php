@@ -3,6 +3,8 @@ use App\UserMessage;
 use Sunra\PhpSimple\HtmlDomParser;
 use App\Pymt;
 use App\Libraries\BaiduGeocoding;
+use EasyWeChat\Message\News;
+use App\Test;
 /*
 |--------------------------------------------------------------------------
 | Application Routes
@@ -15,8 +17,6 @@ use App\Libraries\BaiduGeocoding;
 */
 
 Route::get('/', function () {
-    $baiduApi = new BaiduGeocoding();
-    dd($baiduApi->getLatLng('汉丽轩韩式自','成都'));
 });
 Route::post('menu/delete','MenuController@delete');
 Route::resource('menu','MenuController');
@@ -24,3 +24,4 @@ Route::controller('music163','Music163Controller');
 Route::any('/wechat', 'WechatController@serve');
 Route::controller('pymt','PymtController');
 Route::resource('geohash','GeohashController');
+Route::resource('push','PushController');

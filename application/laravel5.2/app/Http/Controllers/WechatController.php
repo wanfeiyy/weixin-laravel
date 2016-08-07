@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Pymt;
 use Illuminate\Http\Request;
 use Log;
 use App\Http\Requests;
 use App\UserMessage;
+use EasyWeChat\Message\News;
 
 class WechatController extends Controller
 {
@@ -46,7 +48,31 @@ class WechatController extends Controller
         if(isset($result['state']) && !$result['state']){
             return '暂时无法识别该内容';
         }
-        return "LBS查询";
+        try{
+            $lat = isset($message['Location_X']) ? $message['Location_X']:'' ;
+            $lng = isset($message['Location_Y']) ? $message['Location_Y']:'';
+            $geohash = substr(geohash_encode($lat,$lng),0,4);
+            $returnData = Pymt::where('geohash','like',$geohash.'%')->take(5)->get(['name','url','pic','location_x','location_y'])->toArray();
+            $list = [];
+            if(count($returnData)){
+                foreach ($returnData as $k=>$v){
+                    $name = 'news'.$k;
+                    $$name = new News([
+                        'title' => $v['name'],
+                        'description'=>'',
+                        'url'=>$v['url'],
+                        'image'=>$v['pic'],
+                    ]);
+                    $list[] = $$name;
+                }
+                return $list;
+            }else{
+                return '该位置暂无信息！';
+            }
+        }catch (\Exception $e){
+            return $e->getMessage();
+        }
+
     }
 
     private function handleTextMessage($data)
