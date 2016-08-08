@@ -25,3 +25,4 @@ Route::any('/wechat', 'WechatController@serve');
 Route::controller('pymt','PymtController');
 Route::resource('geohash','GeohashController');
 Route::resource('push','PushController');
+Route::resource('material','MaterialController');
