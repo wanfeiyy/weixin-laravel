@@ -26,7 +26,7 @@ class ImageUpload
     /**
      * 文件上传
      * @param  $tmpSrc   临时文件
-     * @param array $size   要裁减的尺寸，可以多个尺寸[['width'=>100,'height'=>100],['width'=>200,'height'=>200]]
+     * @param array $size  要裁减的尺寸，可以多个尺寸[['width'=>100,'height'=>100],['width'=>200,'height'=>200]]
      * @return array
      */
     public static function upload ($tmpSrc,$size = []) {
