@@ -6,11 +6,20 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use Wechat;
+use App\Member;
+use Illuminate\Support\Facades\Response;
+
 class PushController extends Controller
 {
-    public function index()
+    public function index(Member $member,Request $request)
     {
+        $mediaId = $request->input('media_id','');
+        if (!$mediaId) {
+            return Response::json(['state' => false, 'error' => ['error_code' => 3001, 'error_message' => '参数有误']]);
+        }
+        $openIds = $member::lists('open_id')->toArray();
         $broadcats = Wechat::broadcast();
-        $broadcats->sendNews('BrKv7ybgBcD5mNLACFhXNjxdU3uc8dJjhWA69aVozkw',['obkNVs7CHVUnIRM983XHFdysZ7rU','obkNVs33T9wuAUqzuMuAB202C55w']);
+        $result = $broadcats->sendNews($mediaId,$openIds);
+        return Response::json($request);
     }
 }

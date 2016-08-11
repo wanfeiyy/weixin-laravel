@@ -8,6 +8,7 @@ use Log;
 use App\Http\Requests;
 use App\UserMessage;
 use EasyWeChat\Message\News;
+use App\Member;
 
 class WechatController extends Controller
 {
@@ -88,14 +89,26 @@ class WechatController extends Controller
 
     private function handleEventMessage($data)
     {
+        $message = \GuzzleHttp\json_decode($data,true);
         switch ($data->Event) {
             case 'subscribe':
-                return '欢迎关注 Feis！';
+                try {
+                    $member = new Member();
+                    $openId = $message['FromUserName'];
+                    $member->open_id = $openId;
+                    $member->save();
+                    return '欢迎关注 Feis！';
+                } catch(\Exception $e) {
+                    return $e->getMessage();
+                }
+
                 break;
             case 'location':
-                $message = \GuzzleHttp\json_decode($data,true);
                 return $message;
                 break;
+            case 'unsubscribe':
+                $openId = $message['FromUserName'];
+                Member::where('open_id',$openId)->delete();
             default:
                 return '无法识别';
                 break;

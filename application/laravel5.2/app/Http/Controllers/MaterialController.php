@@ -12,6 +12,7 @@ use Validator;
 use ValidatorResultClass;
 use App\Libraries\ImageUpload;
 use EasyWeChat\Message\Article;
+use Illuminate\Support\Facades\Response;
 
 class MaterialController extends Controller
 {
@@ -27,10 +28,19 @@ class MaterialController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        dd($this->material->lists('news', 0, 20));
-        //
+        $type = $request->input('type','image');
+        $offset = $request->input('page',1);
+        $count = $request->input('count',10);
+        $data = $this->material->lists($type,$offset-1,$count);
+        $pageing = [
+            'currentPage'   =>  $offset,
+            'lastPage'      =>  ceil($data['total_count'] / $data['item_count']),
+            'perPage'       =>  $count,
+            'total'         =>  $data['total_count'],
+        ];
+        return Response::json(['state'=>true,'data'=>['meta'=>$data['item'],'pageing'=>$pageing]]);
     }
 
     /**
@@ -77,11 +87,13 @@ class MaterialController extends Controller
                 if  (isset($data['media'])  && is_array($data['media'])) {
                     $mediaInfo = $data['media'];
                     $articles = [];
+                    $arrImgSrc = [];
                     foreach($mediaInfo as $k=>$v){
                         $fileInfo = $v->getFileInfo();
                         $localUpload = ImageUpload::upload($fileInfo->getPathname());
                         if ($localUpload['state']) {
                             $imgSrc = $localUpload['data']['src'];
+                            $arrImgSrc[] = $imgSrc;
                             $dbData = ['type'=>0,'is_long'=>0,'description'=>$data['description'][$k],'image'=>$imgSrc];
                             $returnMediaId = $materail->addMaterail($this->material, $dbData, $imgSrc, 1);
                             $mdia_id = $returnMediaId['data']['media_id'];
@@ -98,7 +110,7 @@ class MaterialController extends Controller
                             return json_encode(['satae' => false, 'error' => $localUpload['error']]);
                         }
                     }
-                    $articleLog = ['type'=>4,'is_long'=>0,'description'=>$data['digest']];
+                    $articleLog = ['type'=>4,'is_long'=>0,'description'=>$data['digest'],'image'=>implode(',',$arrImgSrc)];
                     $articleResult = $materail->addMaterail($this->material,$articleLog,$articles,4);
                     if ($articleResult['state']) {
                         return json_encode(['state'=>true,'data'=>$articleResult['data']]);
@@ -140,7 +152,7 @@ class MaterialController extends Controller
      */
     public function show($id)
     {
-        //
+        return Response::json($this->material->get($id));
     }
 
     /**
@@ -174,6 +186,6 @@ class MaterialController extends Controller
      */
     public function destroy($id)
     {
-        //
+        return Response::json($this->material->delete($id));
     }
 }

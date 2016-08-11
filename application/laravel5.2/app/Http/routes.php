@@ -26,3 +26,4 @@ Route::controller('pymt','PymtController');
 Route::resource('geohash','GeohashController');
 Route::resource('push','PushController');
 Route::resource('material','MaterialController');
+Route::controller('member','MemberController');
